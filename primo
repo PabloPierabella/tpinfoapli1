@@ -1,0 +1,40 @@
+/*
+ * tp.c
+ *
+ *  Created on: 29 abr. 2023
+ *      Author: Pablo Pierabella
+ */
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+int* rango(int num) {
+    int n = num - 2;
+    int* range = (int*) malloc(n * sizeof(int));
+    for (int i = 2; i < num; i++) {
+        range[i-2] = i;
+    }
+    return range;
+}
+
+int primo(int num){
+	int *p= rango(num);
+	int res = 0;
+	for(int i = 0;i<num-2;i++){
+		(num%(*(p + i))) == 0 ? res=1:res;
+	}
+	return res;
+}
+
+int main(){
+    int* p = rango(17);
+    for(int i=0;i<(17-2);i++){
+        printf("\n %d",*(p + i));
+    }
+    printf("\n\t %i",primo(17));
+    free(p);
+    return 0;
+}
